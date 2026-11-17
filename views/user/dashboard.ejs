@@ -1,0 +1,16 @@
+<h1>User Dashboard</h1>
+<p>Welcome, <strong>
+        <%= currentUser.name %>
+    </strong>! 👋</p>
+<div class="card">
+    <h2>Your Account</h2>
+    <p><strong>Email:</strong>
+        <%= currentUser.email %>
+    </p>
+    <p><strong>Role:</strong>
+        <%= currentUser.role %>
+    </p>
+    <p><strong>Member since:</strong>
+        <%= currentUser.createdAt.toDateString() %>
+    </p>
+</div>

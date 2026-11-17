@@ -1,0 +1,29 @@
+<h1>Manage Users</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Joined</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.forEach(user=> { %>
+            <tr>
+                <td>
+                    <%= user.name %>
+                </td>
+                <td>
+                    <%= user.email %>
+                </td>
+                <td><span class="badge badge-<%= user.role %>">
+                        <%= user.role %>
+                    </span></td>
+                <td>
+                    <%= user.createdAt.toDateString() %>
+                </td>
+            </tr>
+            <% }) %>
+    </tbody>
+</table>

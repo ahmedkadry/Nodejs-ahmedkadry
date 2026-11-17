@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= typeof title !=='undefined' ? title + ' | MyApp' : 'MyApp' %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="brand">MyApp</a>
+            <div class="nav-links">
+                <% if (currentUser) { %>
+                    <% if (currentUser.role==='admin' ) { %>
+                        <a href="/admin/dashboard">Admin Panel</a>
+                        <% } else { %>
+                            <a href="/user/dashboard">Dashboard</a>
+                            <% } %>
+                                <span class="user-name">Hi, <%= currentUser.name %></span>
+                                <form action="/logout" method="POST" class="inline-form">
+                                    <button type="submit" class="btn btn-outline">Logout</button>
+                                </form>
+                                <% } else { %>
+                                    <a href="/login">Login</a>
+                                    <a href="/register" class="btn btn-primary">Register</a>
+                                    <% } %>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container main-content">
+        <% if (typeof success !=='undefined' && success) { %>
+            <div class="alert alert-success">
+                <%= success %>
+            </div>
+            <% } %>
+                <% if (typeof error !=='undefined' && error) { %>
+                    <div class="alert alert-error">
+                        <%= error %>
+                    </div>
+                    <% } %>
+                        <%- body %>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <%= new Date().getFullYear() %> MyApp. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
