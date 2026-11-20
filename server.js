@@ -16,7 +16,7 @@ const app = express();
 const dns = require('dns');
 dns.setServers(['8.8.8.8', '8.8.4.4']); // Google DNS
 
-//connectDB();
+connectDB();
 
 // ✅ Call it once at startup — Vercel awaits this before handling requests
 
